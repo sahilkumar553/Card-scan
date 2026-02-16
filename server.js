@@ -11,6 +11,7 @@ const localtunnel = require('localtunnel');
 const vision = require('@google-cloud/vision');
 
 const app = express();
+const PUBLIC_DIR = path.join(__dirname, 'public');
 const PORT = process.env.PORT || 3000;
 const SESSION_TTL_MS = 5 * 60 * 1000;
 const MAX_CARD_DIGITS = 16;
@@ -87,7 +88,19 @@ app.use('/api', (_req, res, next) => {
   next();
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(PUBLIC_DIR));
+
+app.get('/', (_req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
+});
+
+app.get('/scanner', (_req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'scanner.html'));
+});
+
+app.get('/scanner.html', (_req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'scanner.html'));
+});
 
 const upload = multer({
   storage: multer.memoryStorage(),
