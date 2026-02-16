@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: card-autofill-scanner
+    runtime: node
+    plan: starter
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        value: /etc/secrets/gcp-vision-key.json
+      - key: AUTO_TUNNEL
+        value: "false"

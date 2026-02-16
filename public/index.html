@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desktop Card Scanner</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body class="desktop-body">
+  <main class="desktop-wrap">
+    <section class="panel">
+      <div class="panel-header">
+        <h1>Card Autofill</h1>
+        <button id="openScannerBtn" class="camera-btn" title="Scan with mobile">
+          <svg class="camera-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h3l1.6-2h6.8L17 7h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z" />
+            <circle cx="12" cy="13" r="4" />
+            <circle cx="6.8" cy="10" r="0.9" fill="currentColor" stroke="none" />
+          </svg>
+        </button>
+      </div>
+
+      <p class="subtext">Scan your card from phone and autofill this form instantly.</p>
+
+      <form id="cardForm" class="card-form" autocomplete="off">
+        <label>Card Number</label>
+        <input id="cardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" />
+
+        <label>Cardholder Name</label>
+        <input id="cardholderName" type="text" placeholder="FULL NAME" />
+
+        <div class="row">
+          <div>
+            <label>Expiry</label>
+            <input id="expiryDate" type="text" placeholder="MM/YY" />
+          </div>
+          <div>
+            <label>Card Type</label>
+            <div id="cardTypeBadge" class="type-badge unknown">
+              <img id="cardTypeIcon" class="card-type-icon hidden" alt="Card brand" />
+              <span id="cardTypeText">UNKNOWN</span>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div id="desktopStatus" class="status-text">Ready to scan.</div>
+      <div id="desktopSuccessTick" class="desktop-success-tick hidden">✓</div>
+    </section>
+  </main>
+
+  <div id="qrModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Scan on Mobile</h2>
+      <p>Open your camera and scan this QR code.</p>
+      <img id="qrImage" alt="Session QR" />
+      <p class="mono" id="sessionLabel"></p>
+      <button id="closeModalBtn" class="secondary-btn">Close</button>
+    </div>
+  </div>
+    <script src="index.js"></script>
+</body>
+</html>

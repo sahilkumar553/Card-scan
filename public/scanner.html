@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Card Scanner</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body class="scanner-body">
+  <main class="scanner-wrap scanner-mobile-wrap">
+    <div class="scanner-head">
+      <h1>Card Scanner</h1>
+    </div>
+
+    <div class="camera-shell">
+      <video id="video" autoplay playsinline muted></video>
+      <div class="scan-frame"></div>
+      <div class="scan-hint">Position full card inside border</div>
+      <div id="scanLoader" class="loader hidden"></div>
+      <div id="scanSuccess" class="scan-success hidden">✓</div>
+    </div>
+
+    <p id="scannerSubtitle" class="subtext">Align card inside the frame and keep it steady.</p>
+
+    <canvas id="captureCanvas" class="hidden"></canvas>
+
+    <div class="scanner-actions">
+      <button id="scanBtn" class="primary-btn">Start Real-Time Scan</button>
+    </div>
+
+    <p id="scannerStatus" class="status-text scanner-status">Initializing camera...</p>
+  </main>
+ <script src="scanner.js"></script>
+</body>
+</html>

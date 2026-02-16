@@ -1,0 +1,32 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "QR-based desktop-mobile card scanner with Google Vision OCR",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:lan": "set PORT=3001&& node server.js",
+    "start:secure": "set PORT=3001&& node server.js",
+    "start:tunnel": "set AUTO_TUNNEL=true&& node server.js",
+    "tunnel:cloudflare": "cloudflared tunnel --url http://localhost:3000 --no-autoupdate",
+    "dev": "nodemon server.js",
+    "test": "echo \"No tests configured\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@google-cloud/vision": "^5.3.4",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "localtunnel": "^2.0.2",
+    "multer": "^2.0.2",
+    "qrcode": "^1.5.4",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
